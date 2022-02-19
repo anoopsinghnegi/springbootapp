@@ -19,6 +19,12 @@ pipeline {
                 sh "docker build -t springboot:$BUILD_ID ."
             }
         }
+        stage ("Kubernetes") {
+            steps {
+                sh "echo $KUBECONFIG"
+                sh "kubectl get nodes"
+            }
+        }
     }
     post {
         success {
